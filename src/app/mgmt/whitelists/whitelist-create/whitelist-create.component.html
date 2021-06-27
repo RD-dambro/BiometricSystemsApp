@@ -1,0 +1,20 @@
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+    <!-- <div>
+        <label for="id">ID</label>
+        <input formControlName="id" id="id" type="text">    
+    </div> -->
+    <div>
+        <label for="name">Name</label>
+        <input formControlName="name" id="name" type="text">    
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <input formControlName="description" id="description" type="text">
+    </div>
+    
+    <select formControlName="whitelist">
+        <option [ngValue]="null" disabled>Choose your profile</option>
+        <option *ngFor="let d of devices | async" [ngValue]="d">{{d.name}}</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
