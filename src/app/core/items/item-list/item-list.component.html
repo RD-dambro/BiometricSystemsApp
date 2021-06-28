@@ -1,6 +1,0 @@
-<div *ngFor="let i of items$ | async">
-    <div *ngFor="let t of template | keyvalue">
-        <label [for]="t.key">{{t.key}}</label>
-        <p [name]="t.key">{{i[t.key]}}</p>
-    </div>
-</div>

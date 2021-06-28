@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -6,14 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  components = [
+  @Input() components:string[] = [
     'devices',
     'samples',
     'galleries',
     'employees',
     'whitelists'
-  ]  
-  constructor() { }
+  ]
+  path: Observable<any>
+  constructor(private route: ActivatedRoute) { 
+    this.path = this.route.url
+  }
 
   ngOnInit(): void {
   }

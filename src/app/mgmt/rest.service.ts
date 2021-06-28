@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { Bio } from './models';
+
+interface Result {
+  [key: string]: Bio[]
+}
 
 @Injectable({
   providedIn: 'root'
@@ -9,20 +13,32 @@ import { Bio } from './models';
 export class RestService {
   private url = 'http://localhost:3000/'
   private endpoint: string
-  private items: Bio[] = []
-  private itemsUpdated = new Subject<Bio[]>()
+  private itemsUpdated = new Subject<Result[]>()
+
+  subscriptions: Subscription[] = []
   
+  destroy = () => {
+    this.subscriptions.forEach(s => s.unsubscribe())
+  }
   
-  fetchAll = (endpoint:string) => {
-    this.http.get(this.url + endpoint)
-    .subscribe(data => {
-      this.items = [...Object.values(data)]
-      this.itemsUpdated.next([...this.items])
-    },
-     err => {
-       console.error(err)
-     }
-    )
+  fetchAll = (endpoints:string[]) => {
+    const itemList: Result[] = []
+    //get all dependencies
+    endpoints.forEach(endpoint => {
+      let s = this.http.get(this.url + endpoint)
+        .subscribe(data => {
+          let item: Result = {}
+          item[endpoint] = [...Object.values(data)]
+          itemList.push(item)
+          this.itemsUpdated.next([...itemList])
+          console.log(item)
+        },
+        err => {
+          console.error(err)
+        }
+        )
+      this.subscriptions.push(s)
+    })
   }
 
   getItemsUpdated = () => {
@@ -31,12 +47,12 @@ export class RestService {
 
   addItem = (item: Bio, endpoint: string) => {
     console.log(`Adding item to ${endpoint}`)
-    this.http.post(this.url+endpoint, item)
+    let s = this.http.post(this.url+endpoint, item)
     .subscribe(data => {
       console.log(data)
     })
-    // this.items.push(item)
-    // this.itemsUpdated.next([...this.items])
+
+    this.subscriptions.push(s)
   }
 
   

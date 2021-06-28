@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { IDevice } from '../../models';
+import { IDevice, IEmployee, IGallery } from '../../models';
 import { RestService } from '../../rest.service';
+
+interface IResult {
+  [key: string]: IDevice[] | IEmployee[] | IGallery[]
+}
 
 @Component({
   selector: 'app-whitelist-create',
@@ -12,13 +16,13 @@ import { RestService } from '../../rest.service';
 export class WhitelistCreateComponent implements OnInit {
 
   myForm: FormGroup
-  devices: Observable<IDevice[]>
+  relations: Observable<IResult[]>
 
   submit = () => {if (this.myForm.valid) this.rs.addItem(this.myForm.value, 'whitelists')}
 
   constructor(private fb: FormBuilder, private rs: RestService) { 
-    this.rs.fetchAll('devices')
-    this.devices = this.rs.getItemsUpdated()
+    this.rs.fetchAll(['devices', 'galleries', 'employees'])
+    this.relations = this.rs.getItemsUpdated()
   }
 
   ngOnInit(): void {
@@ -26,7 +30,9 @@ export class WhitelistCreateComponent implements OnInit {
       id: [],
       name: ['', Validators.required],
       description: [],
-      whitelist: null
+      devices: null,
+      galleries: null,
+      employees: null
     })
   }
 

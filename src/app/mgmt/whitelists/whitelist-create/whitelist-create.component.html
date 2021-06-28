@@ -1,8 +1,4 @@
 <form [formGroup]="myForm" (ngSubmit)="submit()">
-    <!-- <div>
-        <label for="id">ID</label>
-        <input formControlName="id" id="id" type="text">    
-    </div> -->
     <div>
         <label for="name">Name</label>
         <input formControlName="name" id="name" type="text">    
@@ -11,10 +7,25 @@
         <label for="description">Description</label>
         <input formControlName="description" id="description" type="text">
     </div>
+
+    <div *ngIf="relations | async as rel">
+        <div *ngFor="let r of rel">
+            <select *ngIf="r.devices as dl" formControlName="devices">
+                <option [ngValue]="null"  disabled>Choose your devices</option>
+                <option *ngFor="let d of dl" [ngValue]="d">{{d.name}}</option>
+            </select>
     
-    <select formControlName="whitelist">
-        <option [ngValue]="null" disabled>Choose your profile</option>
-        <option *ngFor="let d of devices | async" [ngValue]="d">{{d.name}}</option>
-    </select>
+            <select *ngIf="r.galleries as gl" formControlName="galleries">
+                <option [ngValue]="null"  disabled>Choose your galleries</option>
+                <option *ngFor="let g of gl" [ngValue]="g">{{g.name}}</option>
+            </select>
+    
+            <select *ngIf="r.employees as el" formControlName="employees">
+                <option [ngValue]="null"  disabled>Choose your employees</option>
+                <option *ngFor="let e of el" [ngValue]="e">{{e.name}}</option>
+            </select>
+        </div>
+    </div>
+
     <button type="submit">Submit</button>
 </form>

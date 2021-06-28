@@ -1,8 +1,0 @@
-
-<form (ngSubmit)="post(itemForm)" #itemForm ="ngForm">
-    <div *ngFor="let i of template | keyvalue">
-        <label [for]="i.key">{{i.key}}</label>
-        <input ngModel [name]="i.key">
-    </div>
-    <button type="submit">Submit</button>
-</form>
