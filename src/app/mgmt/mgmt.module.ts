@@ -24,16 +24,41 @@ import { GalleryComponent } from './galleries/gallery/gallery.component';
 import { SampleComponent } from './samples/sample/sample.component';
 import { WhitelistComponent } from './whitelists/whitelist/whitelist.component';
 import { PathNotFoundComponent } from './path-not-found/path-not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
 @NgModule({
-  declarations: [HomeComponent, DeviceCreateComponent, DeviceListComponent, DeviceDetailComponent, WhitelistCreateComponent, WhitelistDetailComponent, WhitelistListComponent, EmployeeDetailComponent, EmployeeCreateComponent, EmployeeListComponent, GalleryCreateComponent, GalleryDetailComponent, GalleryListComponent, SampleCreateComponent, SampleListComponent, SampleDetailComponent, DeviceComponent, EmployeeComponent, GalleryComponent, SampleComponent, WhitelistComponent, PathNotFoundComponent],
+  declarations: [
+    HomeComponent, 
+    DeviceCreateComponent, 
+    DeviceListComponent, 
+    DeviceDetailComponent, 
+    WhitelistCreateComponent, 
+    WhitelistDetailComponent, 
+    WhitelistListComponent, 
+    EmployeeDetailComponent, 
+    EmployeeCreateComponent, 
+    EmployeeListComponent, 
+    GalleryCreateComponent, 
+    GalleryDetailComponent, 
+    GalleryListComponent, 
+    SampleCreateComponent, 
+    SampleListComponent, 
+    SampleDetailComponent, 
+    DeviceComponent, 
+    EmployeeComponent, 
+    GalleryComponent, 
+    SampleComponent, 
+    WhitelistComponent, 
+    PathNotFoundComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ]
 })
 export class MgmtModule { }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { Bio } from './models';
 
