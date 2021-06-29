@@ -23,13 +23,12 @@ import { EmployeeComponent } from './employees/employee/employee.component';
 import { GalleryComponent } from './galleries/gallery/gallery.component';
 import { SampleComponent } from './samples/sample/sample.component';
 import { WhitelistComponent } from './whitelists/whitelist/whitelist.component';
-import { PatNotFoundComponent } from './pat-not-found/pat-not-found.component';
 import { PathNotFoundComponent } from './path-not-found/path-not-found.component';
 
 
 
 @NgModule({
-  declarations: [HomeComponent, DeviceCreateComponent, DeviceListComponent, DeviceDetailComponent, WhitelistCreateComponent, WhitelistDetailComponent, WhitelistListComponent, EmployeeDetailComponent, EmployeeCreateComponent, EmployeeListComponent, GalleryCreateComponent, GalleryDetailComponent, GalleryListComponent, SampleCreateComponent, SampleListComponent, SampleDetailComponent, DeviceComponent, EmployeeComponent, GalleryComponent, SampleComponent, WhitelistComponent, PatNotFoundComponent, PathNotFoundComponent],
+  declarations: [HomeComponent, DeviceCreateComponent, DeviceListComponent, DeviceDetailComponent, WhitelistCreateComponent, WhitelistDetailComponent, WhitelistListComponent, EmployeeDetailComponent, EmployeeCreateComponent, EmployeeListComponent, GalleryCreateComponent, GalleryDetailComponent, GalleryListComponent, SampleCreateComponent, SampleListComponent, SampleDetailComponent, DeviceComponent, EmployeeComponent, GalleryComponent, SampleComponent, WhitelistComponent, PathNotFoundComponent],
   imports: [
     CommonModule,
     FormsModule,
