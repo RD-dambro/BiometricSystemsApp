@@ -1,0 +1,18 @@
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+   <div *ngFor="let question of formTemplate | keyvalue">
+        <div *ngIf="question.value != null; else relationBlock">
+            <label [for]="question.key"> {{question.key}} </label>
+            <input [id]="question.key" [formControlName]="question.key" type="text">
+        </div>
+        <ng-template #relationBlock >
+            <div *ngIf="relations | async as rel">
+                <select [formControlName]="question.key" >
+                    <option [ngValue]="null"  disabled>Choose your {{question.key}}</option>
+                    <option *ngFor="let item of rel[relationLookup[question.key]]" [ngValue]="item">{{item.name}}</option>
+                </select>
+            </div>
+        </ng-template>
+        
+    </div>
+    <button type="submit">Submit</button>
+</form>
