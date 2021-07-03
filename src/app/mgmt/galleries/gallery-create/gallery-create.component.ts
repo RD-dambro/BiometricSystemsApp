@@ -21,8 +21,8 @@ export class GalleryCreateComponent implements OnInit {
   submit = () => {if (this.myForm.valid) this.rs.addItem(this.myForm.value, 'galleries')}
 
   constructor(private fb: FormBuilder, private rs: RestService) { 
-    this.rs.fetchAll(['whitelists', 'employees'])
-    this.relations = this.rs.getItemsUpdated()
+    this.rs.fetchList(['whitelists', 'employees'])
+    this.relations = this.rs.getRelationsUpdated()
   }
 
   ngOnInit(): void {

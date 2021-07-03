@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { deviceFormTemplate, deviceRelationLookup } from '../models';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,9 @@ export class HomeComponent implements OnInit {
     'whitelists'
   ]
   path: Observable<any>
+
+  ft = deviceFormTemplate
+  dl = deviceRelationLookup
   constructor(private route: ActivatedRoute) { 
     this.path = this.route.url
   }

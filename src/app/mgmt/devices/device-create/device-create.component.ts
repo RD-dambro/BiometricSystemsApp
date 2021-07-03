@@ -24,8 +24,8 @@ export class DeviceCreateComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.rs.fetchAll(['whitelists'])
-    this.relations = this.rs.getItemsUpdated()
+    this.rs.fetchList(['whitelists'])
+    this.relations = this.rs.getRelationsUpdated()
 
     this.myForm = this.fb.group({
       id: [],

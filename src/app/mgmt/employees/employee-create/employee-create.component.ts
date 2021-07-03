@@ -22,8 +22,8 @@ export class EmployeeCreateComponent implements OnInit {
   submit = () => {if (this.myForm.valid) this.rs.addItem(this.myForm.value, 'employees')}
 
   constructor(private fb: FormBuilder, private rs: RestService) { 
-    this.rs.fetchAll(['samples', 'galleries', 'whitelists'])
-    this.relations = this.rs.getItemsUpdated()
+    this.rs.fetchList(['samples', 'galleries', 'whitelists'])
+    this.relations = this.rs.getRelationsUpdated()
   }
 
   ngOnInit(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { sampleFormTemplate, sampleRelationLookup } from '../../models';
 
 @Component({
   selector: 'app-sample',
@@ -6,11 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sample.component.scss']
 })
 export class SampleComponent implements OnInit {
-  components = [
-    'create',
-    'list',
-    'detail'
-  ]  
+  endpoint='samples'
+  ft = sampleFormTemplate
+  rl = sampleRelationLookup
   constructor() { }
 
   ngOnInit(): void {

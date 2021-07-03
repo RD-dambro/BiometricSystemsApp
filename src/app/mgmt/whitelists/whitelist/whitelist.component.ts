@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { whitelistFormTemplate, whitelistRelationLookup } from '../../models';
 
 @Component({
   selector: 'app-whitelist',
@@ -6,11 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./whitelist.component.scss']
 })
 export class WhitelistComponent implements OnInit {
-  components = [
-    'create',
-    'list',
-    'detail'
-  ]  
+  endpoint='whitelists'
+  ft = whitelistFormTemplate
+  rl = whitelistRelationLookup
   constructor() { }
 
   ngOnInit(): void {

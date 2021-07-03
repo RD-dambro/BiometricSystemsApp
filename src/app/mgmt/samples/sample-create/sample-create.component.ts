@@ -21,8 +21,8 @@ export class SampleCreateComponent implements OnInit {
   submit = () => {if (this.myForm.valid) this.rs.addItem(this.myForm.value, 'samples')}
 
   constructor(private fb: FormBuilder, private rs: RestService) { 
-    this.rs.fetchAll(['employees'])
-    this.relations = this.rs.getItemsUpdated()
+    this.rs.fetchList(['employees'])
+    this.relations = this.rs.getRelationsUpdated()
   }
 
   ngOnInit(): void {

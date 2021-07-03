@@ -12,16 +12,34 @@ interface Result {
 })
 export class RestService {
   private url = 'http://localhost:3000/'
-  private endpoint: string
-  private itemsUpdated = new Subject<Result[]>()
+  // private endpoint: string
+  private relationsUpdated = new Subject<Result[]>()
+  private itemsUpdated = new Subject<Bio[]>()
+  private detailUpdated = new Subject<Bio>()
 
   subscriptions: Subscription[] = []
   
   destroy = () => {
     this.subscriptions.forEach(s => s.unsubscribe())
   }
-  
-  fetchAll = (endpoints:string[]) => {
+  fetchDetail = (endpoint, item) => {
+    this.http.get(`${this.url}${endpoint}/${item.id}/all`)
+    .subscribe(data => this.detailUpdated.next((data as Bio)))
+  }
+
+  fetchItems = (endpoint: string) => {
+    this.http.get(this.url + endpoint)
+    .subscribe(data => {
+      this.itemsUpdated.next([...Object.values(data)])
+      // console.log(item)
+    },
+    err => {
+      console.error(err)
+    }
+    )
+  }
+
+  fetchList = (endpoints:string[]) => {
     const itemList: Result[] = []
     //get all dependencies
     endpoints.forEach(endpoint => {
@@ -30,8 +48,8 @@ export class RestService {
           let item: Result = {}
           item[endpoint] = [...Object.values(data)]
           itemList.push(item)
-          this.itemsUpdated.next([...itemList])
-          console.log(item)
+          this.relationsUpdated.next([...itemList])
+          // console.log(item)
         },
         err => {
           console.error(err)
@@ -40,19 +58,25 @@ export class RestService {
       this.subscriptions.push(s)
     })
   }
+  getDetailUpdated = () => {
+    return this.detailUpdated.asObservable()
+  }
 
   getItemsUpdated = () => {
     return this.itemsUpdated.asObservable()
   }
 
+  getRelationsUpdated = () => {
+    return this.relationsUpdated.asObservable()
+  }
+
   addItem = (item: Bio, endpoint: string) => {
     console.log(`Adding item to ${endpoint}`)
-    let s = this.http.post(this.url+endpoint, item)
-    .subscribe(data => {
-      console.log(data)
-    })
+    return this.http.post(this.url+endpoint, item)
+    // let s = this.http.post(this.url+endpoint, item)
+    // .subscribe()
 
-    this.subscriptions.push(s)
+    // this.subscriptions.push(s)
   }
 
   

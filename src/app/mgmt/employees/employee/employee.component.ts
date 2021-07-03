@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { employeeFormTemplate, employeeRelationLookup } from '../../models';
 
 @Component({
   selector: 'app-employee',
@@ -6,11 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent implements OnInit {
-  components = [
-    'create',
-    'list',
-    'detail'
-  ]  
+  endpoint='employees'
+  ft = employeeFormTemplate
+  rl = employeeRelationLookup
+
   constructor() { }
 
   ngOnInit(): void {

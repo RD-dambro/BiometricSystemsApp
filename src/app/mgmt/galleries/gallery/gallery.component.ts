@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { galleryFormTemplate, galleryRelationLookup } from '../../models';
 
 @Component({
   selector: 'app-gallery',
@@ -6,11 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent implements OnInit {
-  components = [
-    'create',
-    'list',
-    'detail'
-  ]  
+  endpoint='galleries'
+  ft = galleryFormTemplate
+  rl = galleryRelationLookup
+
   constructor() { }
 
   ngOnInit(): void {

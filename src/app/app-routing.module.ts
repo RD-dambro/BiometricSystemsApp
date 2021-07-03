@@ -29,47 +29,15 @@ import { SampleComponent } from './mgmt/samples/sample/sample.component';
 import { PathNotFoundComponent } from './mgmt/path-not-found/path-not-found.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-
-  { path: 'devices', component: DeviceComponent, 
+  { path: '', component: HomeComponent,
     children: [
-      {path: 'create', component: DeviceCreateComponent},
-      {path: 'detail', component: DeviceDetailComponent},
-      {path: 'list', component: DeviceListComponent}
+      {path: 'devices', component: DeviceComponent},
+      {path: 'employees', component: EmployeeComponent},
+      {path: 'samples', component: SampleComponent},
+      {path: 'galleries', component: GalleryComponent},
+      {path: 'whitelists', component: WhitelistComponent}
     ]
-  },
 
-  { path: 'whitelists', component: WhitelistComponent, 
-    children: [
-      {path: 'create', component: WhitelistCreateComponent},
-      {path: 'detail', component: WhitelistDetailComponent},
-      {path: 'list', component: WhitelistListComponent}
-    ]
-  },
-
-  { path: 'employees', component: EmployeeComponent, 
-    children: [
-      {path: 'create', component: EmployeeCreateComponent},
-      {path: 'detail', component: EmployeeDetailComponent},
-      {path: 'list', component: EmployeeListComponent}
-    ]
-  },
-
-  { path: 'galleries', component: GalleryComponent, 
-    children: [
-      {path: 'create', component: GalleryCreateComponent},
-      {path: 'detail', component: GalleryDetailComponent},
-      {path: 'list', component: GalleryListComponent}
-    ]
-  },
-
-  { path: 'samples', component: SampleComponent, 
-    children: [
-      {path: 'create', component: SampleCreateComponent},
-      {path: 'detail', component: SampleDetailComponent},
-      {path: 'list', component: SampleListComponent}
-
-    ]
   },
   
   { path: '**', component: PathNotFoundComponent}

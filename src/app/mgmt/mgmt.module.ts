@@ -25,6 +25,9 @@ import { SampleComponent } from './samples/sample/sample.component';
 import { WhitelistComponent } from './whitelists/whitelist/whitelist.component';
 import { PathNotFoundComponent } from './path-not-found/path-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SimplePreviewComponent } from './preview/simple-preview/simple-preview.component';
+import { SimpleCreateComponent } from './create/simple-create/simple-create.component';
+import { SimpleDetailComponent } from './detail/simple-detail/simple-detail.component';
 
 
 
@@ -51,7 +54,7 @@ import { HttpClientModule } from '@angular/common/http';
     GalleryComponent, 
     SampleComponent, 
     WhitelistComponent, 
-    PathNotFoundComponent
+    PathNotFoundComponent, SimplePreviewComponent, SimpleCreateComponent, SimpleDetailComponent
   ],
   imports: [
     CommonModule,
