@@ -19,11 +19,11 @@ export class SimpleCreateComponent implements OnInit, OnDestroy {
   @Input() relationLookup: {[key: string]: string} = deviceRelationLookup
 
   @Output() itemCreated = new EventEmitter()
-
-  relationList: string[] = [...Object.values(this.relationLookup)]
+  relationList: string[]
+  
 
   myForm: FormGroup
-  relations: Observable<IResult[]>
+  relations: Observable<IResult>
 
   submit = () => {
     if (this.myForm.valid) 
@@ -38,6 +38,8 @@ export class SimpleCreateComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.relationList = [...Object.values(this.relationLookup)]
+
     this.rs.fetchList(this.relationList)
     this.relations = this.rs.getRelationsUpdated()
     // console.log(this.formTemplate)

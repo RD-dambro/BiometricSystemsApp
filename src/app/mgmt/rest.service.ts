@@ -13,7 +13,7 @@ interface Result {
 export class RestService {
   private url = 'http://localhost:3000/'
   // private endpoint: string
-  private relationsUpdated = new Subject<Result[]>()
+  private relationsUpdated = new Subject<Result>()
   private itemsUpdated = new Subject<Bio[]>()
   private detailUpdated = new Subject<Bio>()
 
@@ -40,16 +40,13 @@ export class RestService {
   }
 
   fetchList = (endpoints:string[]) => {
-    const itemList: Result[] = []
+    const items: Result = {}
     //get all dependencies
     endpoints.forEach(endpoint => {
       let s = this.http.get(this.url + endpoint)
         .subscribe(data => {
-          let item: Result = {}
-          item[endpoint] = [...Object.values(data)]
-          itemList.push(item)
-          this.relationsUpdated.next([...itemList])
-          // console.log(item)
+          items[endpoint] = [...Object.values(data)]
+          this.relationsUpdated.next(items)
         },
         err => {
           console.error(err)

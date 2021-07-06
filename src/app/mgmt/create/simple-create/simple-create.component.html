@@ -8,7 +8,7 @@
             <div *ngIf="relations | async as rel">
                 <select [formControlName]="question.key" >
                     <option [ngValue]="null"  disabled>Choose your {{question.key}}</option>
-                    <option *ngFor="let item of rel[relationLookup[question.key]]" [ngValue]="item">{{item.name}}</option>
+                    <option *ngFor="let r of rel[relationLookup[question.key]]" [ngValue]="r">{{r.name}}</option>
                 </select>
             </div>
         </ng-template>

@@ -1,3 +1,6 @@
-<p
-    *ngIf="item | async as i"
->simple-detail works! {{i.name}}</p>
+<div *ngIf="item | async as i">
+    <div *ngFor="let pair of i | keyvalue">
+        {{pair.key}}
+        {{pair.value}}
+    </div>
+</div>
