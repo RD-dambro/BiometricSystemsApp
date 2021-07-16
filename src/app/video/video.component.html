@@ -1,0 +1,9 @@
+
+
+<video #target>
+</video>
+
+<button (click)="play()" [hidden]="target.hidden">play</button>
+<button (click)="pause()" [hidden]="target.hidden">pause</button>
+
+<p *ngIf="touched" [hidden]="!target.hidden"> This stream doesn't exist </p>  
