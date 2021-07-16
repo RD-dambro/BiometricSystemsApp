@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+// import { ActivatedRoute } from '@angular/router';
+// import { Observable } from 'rxjs';
 import { deviceFormTemplate, deviceRelationLookup } from '../models';
 
 @Component({
@@ -9,6 +9,7 @@ import { deviceFormTemplate, deviceRelationLookup } from '../models';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
   @Input() components:string[] = [
     'devices',
     'samples',
@@ -16,12 +17,8 @@ export class HomeComponent implements OnInit {
     'employees',
     'whitelists'
   ]
-  path: Observable<any>
 
-  ft = deviceFormTemplate
-  dl = deviceRelationLookup
-  constructor(private route: ActivatedRoute) { 
-    this.path = this.route.url
+  constructor() { 
   }
 
   ngOnInit(): void {

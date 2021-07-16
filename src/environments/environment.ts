@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  webHost: 'localhost',
+  webPort: 3000,
+  mediaHost: 'localhost',
+  mediaPort: 8000,
+  mediaApp: 'live',
+  API_KEY: 'local'
 };
 
 /*

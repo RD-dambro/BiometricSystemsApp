@@ -16,7 +16,8 @@ import { WhitelistComponent } from './whitelists/whitelist/whitelist.component';
 import { SimplePreviewComponent } from './preview/simple-preview/simple-preview.component';
 import { SimpleCreateComponent } from './create/simple-create/simple-create.component';
 import { SimpleDetailComponent } from './detail/simple-detail/simple-detail.component';
-
+import { VideoComponent } from '../video/video.component';
+import { GetStartedComponent } from '../get-started/get-started.component';
 
 
 @NgModule({
@@ -30,7 +31,9 @@ import { SimpleDetailComponent } from './detail/simple-detail/simple-detail.comp
     PathNotFoundComponent, 
     SimplePreviewComponent, 
     SimpleCreateComponent, 
-    SimpleDetailComponent
+    SimpleDetailComponent,
+    VideoComponent,
+    GetStartedComponent
   ],
   imports: [
     CommonModule,

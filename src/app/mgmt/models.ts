@@ -1,5 +1,14 @@
 import { Validators } from "@angular/forms"
 
+
+export interface ISimpleComponent {
+    endpoint: string
+    formTemplate: {[key: string]: any}
+    relationLookup: {[key: string]: string}
+    next?: string
+}
+
+
 export type Bio = IItem | IDevice | IWhitelist | IEmployee | IGallery | ISample
 
 interface IItem {

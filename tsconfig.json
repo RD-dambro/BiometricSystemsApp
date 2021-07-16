@@ -2,8 +2,11 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strict": false,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    // "preserveSymlinks": true,
+
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -15,6 +18,9 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@angular/*": ["./node_modules/@angular/*"]
+    }
   }
 }

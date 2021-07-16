@@ -1,7 +1,7 @@
 <div *ngIf="items | async as itemList">
     <button 
         *ngFor="let item of itemList"
-        (click)="onDetail(item)"
+        (click)="onDetailChange(item)"
     >{{item.name}}</button>
 </div>
 
@@ -11,15 +11,17 @@
 </div>
 
 <app-simple-detail
-    *ngIf="showDetail"
     [item]="detail"
 ></app-simple-detail>
+
+<ng-template #elseDetail>loading..</ng-template>
 
 <app-simple-create
     *ngIf="toCreate"
     [endpoint]="endpoint"
     [formTemplate]="formTemplate"
     [relationLookup]="relationLookup"
+    [next]="next"
 
     (itemCreated)="onItemCreated($event)"
 ></app-simple-create>

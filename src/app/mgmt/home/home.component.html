@@ -2,10 +2,12 @@
     <a [routerLink]="c">{{c}}</a>
 </div>
 
+<div>
+    <a routerLink="get-started">Get Started</a>
+</div>
+
 <router-outlet></router-outlet>
 
-
-
-<div *ngIf="(path | async) != ''">
-    <a routerLink="..">Back</a>
+<div>
+    <a routerLink="">Home</a>
 </div>

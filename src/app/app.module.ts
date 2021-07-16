@@ -12,7 +12,7 @@ import { MgmtModule } from './mgmt/mgmt.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     MgmtModule
   ],
   providers: [],

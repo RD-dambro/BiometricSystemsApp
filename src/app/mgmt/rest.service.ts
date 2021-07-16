@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable} from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Bio } from './models';
 
 interface Result {
@@ -11,7 +12,7 @@ interface Result {
   providedIn: 'root'
 })
 export class RestService {
-  private url = 'http://localhost:3000/'
+  private url = `http://${environment.webHost}:${environment.webPort}/`
   // private endpoint: string
   private relationsUpdated = new Subject<Result>()
   private itemsUpdated = new Subject<Bio[]>()

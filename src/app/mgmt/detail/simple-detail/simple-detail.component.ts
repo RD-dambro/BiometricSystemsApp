@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Input, OnDestroy, OnInit, EventEmitter } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Bio } from '../../models';
 
 @Component({
@@ -7,13 +7,22 @@ import { Bio } from '../../models';
   templateUrl: './simple-detail.component.html',
   styleUrls: ['./simple-detail.component.scss']
 })
-export class SimpleDetailComponent implements OnInit {
-
+export class SimpleDetailComponent implements OnInit, OnDestroy {
   @Input() item: Observable<Bio>
+
+  sub: Subscription 
+  hidden: boolean
+  
 
   constructor() { }
 
   ngOnInit(): void {
+    this.sub = this.item.subscribe()
+  }
+
+  ngOnDestroy(): void {
+    console.log("destroy detail")
+    this.sub.unsubscribe()
   }
 
 }
