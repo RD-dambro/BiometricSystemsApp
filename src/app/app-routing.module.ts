@@ -13,6 +13,7 @@ import { GetStartedComponent } from './get-started/get-started.component';
 import { SimpleCreateComponent } from './mgmt/create/simple-create/simple-create.component';
 import { deviceFormTemplate, deviceRelationLookup, employeeFormTemplate, employeeRelationLookup, galleryFormTemplate, galleryRelationLookup, sampleFormTemplate, sampleRelationLookup, whitelistFormTemplate, whitelistRelationLookup } from './mgmt/models';
 import { SimplePreviewComponent } from './mgmt/preview/simple-preview/simple-preview.component';
+import { SaveSampleComponent } from './mgmt/samples/save-sample/save-sample.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent,
@@ -64,13 +65,13 @@ const routes: Routes = [
         },
         {
           path: 'sample', 
-          component: SimpleCreateComponent, 
-          data:{
-            endpoint: 'samples',
-            formTemplate: sampleFormTemplate,
-            relationLookup: sampleRelationLookup,
-            next: 'get-started/gallery'
-          }
+          component: SaveSampleComponent, 
+          // data:{
+          //   endpoint: 'samples',
+          //   formTemplate: sampleFormTemplate,
+          //   relationLookup: sampleRelationLookup,
+          //   next: 'get-started/gallery'
+          // }
         },
         {
           path: 'gallery', 

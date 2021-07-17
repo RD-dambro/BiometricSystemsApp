@@ -8,10 +8,6 @@ import { IDevice } from '../models';
   providedIn: 'root'
 })
 export class StreamService {
-  deviceSource = new Subject<IDevice>()
-  device$: Observable<IDevice>
-  deviceSub: Subscription
-
   streamSource = new Subject<boolean>()
   stream_exists$: Observable<boolean>
   stream_exists: boolean = false
@@ -32,14 +28,12 @@ export class StreamService {
         this.stream_key = source
       }
       this.streamSource.next(res)
-    })
-      
-    
+    })  
   }
 
   // base url is static and loaded from envirnoment
   get base_url(): string { return this._base_url; }
-  private _base_url = `http://${environment.mediaHost}:${environment.mediaPort}`;
+  private _base_url = `http://${environment.MEDIA.HOST}:${environment.MEDIA.PORT}`;
 
   // stream key is provided runtime and must be validated 
   // validation requisites:
@@ -48,7 +42,7 @@ export class StreamService {
   get stream_key(): string { return this._stream_key; }
   set stream_key(stream_key: string) {
     let sk = (stream_key && stream_key.trim()) || 'nokey';
-    this._stream_key = `${environment.mediaApp}/${sk}`
+    this._stream_key = `${environment.MEDIA.APP}/${sk}`
   }
 
   private _stream_key = '';
@@ -62,8 +56,6 @@ export class StreamService {
   constructor(
     private http:HttpClient
   ) { 
-    this.device$ = this.deviceSource.asObservable()
     this.stream_exists$ = this.streamSource.asObservable()
-    this.deviceSub = this.device$.subscribe(data => this.stream_key = data.name)
   }
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Bio, deviceFormTemplate, deviceRelationLookup, ISimpleComponent, IWhitelist } from '../../models';
 import { RestService } from '../../rest.service';
+import { CreateItemService } from '../../services/create-item.service';
 
 interface IResult {
   [key: string]: Bio[]
@@ -30,7 +31,6 @@ export class SimpleCreateComponent implements OnInit, OnDestroy {
   // itemCreated = new EventEmitter()
   relationList: string[]
   
-
   myForm: FormGroup
   relations: Observable<IResult>
 
@@ -38,11 +38,14 @@ export class SimpleCreateComponent implements OnInit, OnDestroy {
     if (this.myForm.valid) 
     {
       this.rs.addItem(this.myForm.value, this.endpoint)
-        .subscribe(data => this.itemCreated.emit(data))
-      console.log(this.next)
-      if(this.next != undefined){  
-        this.router.navigate([this.next])
-      }
+        .subscribe(data => {
+          this.itemCreated.emit(data)
+          this.ci.last_item = data as Bio
+          if(this.next != undefined){  
+            this.router.navigate([this.next])
+          }
+        })
+      
     }
   }
 
@@ -50,7 +53,8 @@ export class SimpleCreateComponent implements OnInit, OnDestroy {
     private fb: FormBuilder, 
     private rs: RestService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private ci: CreateItemService
     ) { }
 
   ngOnInit(): void {
@@ -62,7 +66,7 @@ export class SimpleCreateComponent implements OnInit, OnDestroy {
         this.endpoint = d.endpoint
         this.next = d.next
       }
-
+    
       this.relationList = [...Object.values(this.relationLookup)]
 
       this.rs.fetchList(this.relationList)

@@ -18,6 +18,7 @@ import { SimpleCreateComponent } from './create/simple-create/simple-create.comp
 import { SimpleDetailComponent } from './detail/simple-detail/simple-detail.component';
 import { VideoComponent } from '../video/video.component';
 import { GetStartedComponent } from '../get-started/get-started.component';
+import { SaveSampleComponent } from './samples/save-sample/save-sample.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { GetStartedComponent } from '../get-started/get-started.component';
     SimpleCreateComponent, 
     SimpleDetailComponent,
     VideoComponent,
-    GetStartedComponent
+    GetStartedComponent,
+    SaveSampleComponent
   ],
   imports: [
     CommonModule,

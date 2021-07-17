@@ -12,7 +12,7 @@ interface Result {
   providedIn: 'root'
 })
 export class RestService {
-  private url = `http://${environment.webHost}:${environment.webPort}/`
+  private url = `http://${environment.WEB.HOST}:${environment.WEB.PORT}/`
   // private endpoint: string
   private relationsUpdated = new Subject<Result>()
   private itemsUpdated = new Subject<Bio[]>()

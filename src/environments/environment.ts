@@ -4,12 +4,27 @@
 
 export const environment = {
   production: false,
-  webHost: 'localhost',
-  webPort: 3000,
-  mediaHost: 'localhost',
-  mediaPort: 8000,
-  mediaApp: 'live',
-  API_KEY: 'local'
+  WEB: {
+    HOST: 'localhost',
+    PORT: 3000,
+  },
+  MEDIA: {
+    HOST: 'localhost',
+    PORT: 8000,
+    APP: 'live',
+  },
+  RABBIT: {
+    HOST: 'localhost',
+    PORT: 5672,
+    USERNAME:'user',
+    PASSWORD:'password',
+    VIRTUALHOST:'vhost',
+
+    EXCHANGE: 'message',
+    EXCHANGETYPE: 'topic',
+    QUEUE: 'queue_name'
+  },
+  
 };
 
 /*
