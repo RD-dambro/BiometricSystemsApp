@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ProducerOptions } from 'kafka-node';
 import { environment } from 'src/environments/environment';
 import { ConnectionOptions, Producer, rabbitUrl } from './rabbit';
 
