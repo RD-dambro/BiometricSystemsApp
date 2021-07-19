@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Bio, deviceFormTemplate, deviceRelationLookup, ISimpleComponent, IWhitelist } from '../../models';
-import { RestService } from '../../rest.service';
 import { CreateItemService } from '../../services/create-item.service';
+import { RestService } from '../../services/rest.service';
 
 interface IResult {
   [key: string]: Bio[]

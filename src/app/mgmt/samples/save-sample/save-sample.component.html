@@ -1,1 +1,17 @@
-<p>save-sample works!</p>
+<p>save samples for this employee</p>
+
+
+
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+    <div *ngIf="employee">
+        <app-simple-detail
+            [item]="employee"
+        ></app-simple-detail>
+    </div>
+    
+    <select *ngIf="devices | async as dev" formControlName="device">
+        <option [ngValue]="null"  disabled>Choose your device</option>
+        <option *ngFor="let d of dev" [ngValue]="d.name">{{d.name}}</option>
+    </select>
+    <button type="submit">Submit</button>
+ </form>

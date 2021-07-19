@@ -8,7 +8,8 @@ import { Bio } from '../../models';
   styleUrls: ['./simple-detail.component.scss']
 })
 export class SimpleDetailComponent implements OnInit, OnDestroy {
-  @Input() item: Observable<Bio>
+  @Input() item_ref: Observable<Bio> = undefined
+  @Input() item: Bio = undefined
 
   sub: Subscription 
   hidden: boolean
@@ -17,12 +18,12 @@ export class SimpleDetailComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit(): void {
-    this.sub = this.item.subscribe()
+    if(!!this.item_ref)this.sub = this.item_ref.subscribe( res => this.item = res)
   }
 
   ngOnDestroy(): void {
     console.log("destroy detail")
-    this.sub.unsubscribe()
+    if(!!this.sub)this.sub.unsubscribe()
   }
 
 }

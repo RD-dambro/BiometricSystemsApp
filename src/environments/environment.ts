@@ -13,16 +13,9 @@ export const environment = {
     PORT: 8000,
     APP: 'live',
   },
-  RABBIT: {
+  WORKER: {
     HOST: 'localhost',
-    PORT: 5672,
-    USERNAME:'user',
-    PASSWORD:'password',
-    VIRTUALHOST:'vhost',
-
-    EXCHANGE: 'message',
-    EXCHANGETYPE: 'topic',
-    QUEUE: 'queue_name'
+    PORT: 3100,
   },
   
 };

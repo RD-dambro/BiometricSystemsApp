@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, EventEmitte
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Bio, deviceFormTemplate, deviceRelationLookup, ISimpleComponent } from '../../models';
-import { RestService } from '../../rest.service';
+import { RestService } from '../../services/rest.service';
 
 interface IResult {
   [key: string]: Bio[]
